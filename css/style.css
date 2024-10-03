@@ -121,6 +121,20 @@ textarea {
   content: "";
   background: #fff !important;
 }
+/*
+.projects_grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px; 
+}
+
+@media (max-width: 768px) {
+  .projects_grid {
+      grid-template-columns: 1fr;
+  }
+}
+*/
+
 .heading-sec__main::after {
   content: "";
   position: absolute;
@@ -230,8 +244,10 @@ textarea {
 
 .home-hero {
   color: #fff;
-  background: linear-gradient(to right, rgba(0, 98, 185, 0.8), rgba(0, 98, 185, 0.8)), url(../../assets/svg/common-bg.svg);
+  background: url(../../assets/Calgary.jpg);
+  background-size: 100% auto; 
   background-position: center;
+  background-repeat: no-repeat;
   height: 100vh;
   min-height: 80rem;
   max-height: 120rem;
@@ -372,9 +388,11 @@ textarea {
 }
 .projects__row-img-cont {
   overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 .projects__row-img {
-  width: 100%;
+  width: 60%;
   display: block;
   object-fit: cover;
 }
