@@ -21,6 +21,15 @@ Inside media queries 1em is always 16px i.e 1em = 16px at every screen size only
   font-family: inherit;
 }
 
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px; /* Adds spacing between the buttons */
+  width: 100% auto; /* Adjust width as needed */
+  height: 200px; /* Adjust height as needed */
+}
+
 html {
   font-size: 62.5%;
   scroll-behavior: smooth;
