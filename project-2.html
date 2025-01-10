@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S4EN3HN5QD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-S4EN3HN5QD');
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -87,7 +96,7 @@
         <h1 class="heading-primary">Office Bids</h1>
         <div class="project-cs-hero__info">
           <p class="text-primary">
-            A full stack application utilizing SupaBase, React.js, 
+            A full stack application utilizing SupaBase and React.js to allow employees to contribute to office relocations.
           </p>
         </div>
         <div class="project-cs-hero__cta">
@@ -98,25 +107,42 @@
     <section class="project-details">
       <div class="main-container">
         <div class="project-details__content">
-          <div class="project-details__showcase-img-cont">
-            <img
-              src="./assets/jpeg/project-mockup-example.jpeg"
-              alt="Project Image"
-              class="project-details__showcase-img"
-            />
-          </div>
           <div class="project-details__content-main">
             <div class="project-details__desc">
               <h3 class="project-details__content-title">Project Overview</h3>
               <p class="project-details__desc-para">
                 This project was inspired by my previous co-workers concern over moving office locations, where they felt it was a quite uninvolved
-                process for them when they wanted to contribute and make choices. 
+                process for them when they wanted to contribute and make choices. Noting how the office move felt like they were just told to pack everything 
+                up and move offices. I then realized how this is happing all of the time, a friend of mine has even moved offices 4 times in the last year!
               </p>
+              <img
+              src="./assets/png/officebid_main.png"
+              style="width: 50%; height: 300px; display: block; margin-left: auto; margin-right: auto;"
+              >
               <p class="project-details__desc-para">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-                alias tenetur minus quaerat aliquid, aut provident blanditiis,
-                deleniti aspernatur ipsam eaque veniam voluptatem corporis vitae
-                mollitia laborum corrupti ullam rem?
+                What Office Bids is, is a spin off on an auction website where users would be asssigned a certain amount of credit (in dollars) from there managers,
+                and could then use that credit to do 1 of 2 things: add a new office item for other to contribute to, or contribute to others ideas. This would allow for 
+                the employes to get a say in what would be in there new office and even add a bit of a game/competition to the office where people would be trying to 
+                get eachother to bid on their items. 
+              </p>
+              <img
+              src="./assets/png/officebids-enter.png"
+              style="width: auto; height: 300px; display: block; margin-left: auto; margin-right: auto;"
+              >
+              <p class="project-details__desc-para">
+                An example of this would be if Employee A wanted to get a new coffee machine for the office. Employee A would then find a price, image, and link to the 
+                coffee machine of Employee A's choice. They would upload this to OfficeBids (as seen above) where a new tile would appear (as seen below) on the main page for the other employees to see.
+                Employee A could put some of their credits towards it, but if the machine was $1000 and each employee was given $100, Employee A would have to try to 
+                advertise this choice and get atleast 9 others to contribute to it before it could be marked as complete. 
+              </p>
+              <img
+              src="./assets/png/officebids_testcard.png"
+              style="width: auto; height: 300px; display: block; margin-left: auto; margin-right: auto;"
+              >
+              <p class="project-details__desc-para">
+                During my Internship with the Solution Stack (they were about to move offices), I pitched this idea to my supervisor, who to my absolute surprise,
+                wanted to try it out. He then helped me finish everything up and make sure everything entered would be secure, and it was <strong>used by them in July of 2024
+                where it was a huge success!</strong>
               </p>
             </div>
             <div class="project-details__tools-used">
@@ -125,31 +151,13 @@
                 <div class="skills__skill">HTML</div>
                 <div class="skills__skill">CSS</div>
                 <div class="skills__skill">JavaScript</div>
-                <div class="skills__skill">React</div>
-                <div class="skills__skill">SASS</div>
-                <div class="skills__skill">GIT</div>
-                <div class="skills__skill">Shopify</div>
-                <div class="skills__skill">Wordpress</div>
-                <div class="skills__skill">Google ADS</div>
-                <div class="skills__skill">Facebook Ads</div>
-                <div class="skills__skill">Android</div>
-                <div class="skills__skill">IOS</div>
+                <div class="skills__skill">React.js</div>
+                <div class="skills__skill">SupaBase</div>
+                <div class="skills__skill">AWS Codecommit</div>
+                <div class="skills__skill">Vercel</div>
+                <div class="skills__skill">Database Design</div>
+                <div class="skills__skill">SQL</div>
               </div>
-            </div>
-            <div class="project-details__links">
-              <h3 class="project-details__content-title">See Live</h3>
-              <a
-                href="#"
-                class="btn btn--med btn--theme project-details__links-btn"
-                target="_blank"
-                >Live Link</a
-              >
-              <a
-                href="#"
-                class="btn btn--med btn--theme-inv project-details__links-btn"
-                target="_blank"
-                >Code Link</a
-              >
             </div>
           </div>
         </div>
@@ -163,48 +171,26 @@
               <span>Social</span>
             </h2>
             <div class="main-footer__social-cont">
-              <a target="_blank" rel="noreferrer" href="#">
+              <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/king-jared">
                 <img
                   class="main-footer__icon"
                   src="./assets/png/linkedin-ico.png"
                   alt="icon"
                 />
               </a>
-              <a target="_blank" rel="noreferrer" href="#">
+              <a target="_blank" rel="noreferrer" href="https://github.com/JaredjKing">
                 <img
                   class="main-footer__icon"
                   src="./assets/png/github-ico.png"
                   alt="icon"
                 />
               </a>
-              <a target="_blank" rel="noreferrer" href="#">
-                <img
-                  class="main-footer__icon"
-                  src="./assets/png/twitter-ico.png"
-                  alt="icon"
-                />
-              </a>
-              <a target="_blank" rel="noreferrer" href="#">
-                <img
-                  class="main-footer__icon"
-                  src="./assets/png/yt-ico.png"
-                  alt="icon"
-                />
-              </a>
-              <a target="_blank" rel="noreferrer" href="#">
-                <img
-                  class="main-footer__icon main-footer__icon--mr-none"
-                  src="./assets/png/insta-ico.png"
-                  alt="icon"
-                />
-              </a>
             </div>
           </div>
           <div class="main-footer__row main-footer__row-2">
-            <h4 class="heading heading-sm text-lt">John Doe</h4>
+            <h4 class="heading heading-sm text-lt">Jared King</h4>
             <p class="main-footer__short-desc">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit facilis
-              tempora explicabo quae quod deserunt
+              Thank you for taking the time to look through my Portfolio!
             </p>
           </div>
         </div>

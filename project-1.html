@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S4EN3HN5QD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-S4EN3HN5QD');
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -85,22 +94,11 @@
         <h1 class="heading-primary">High-Frequency Trading Project</h1>
         <div class="project-cs-hero__info">
           <p class="text-primary">
-            Exploring the impact of public sentiment on stock prices and the effectiveness of mathematical models in high-frequency trading.
+            Exploring the impact of public sentiment on stock prices, the effectiveness of mathematical models in high-frequency trading, and their differences.
           </p>
         </div>
         <div class="project-cs-hero__cta">
           <a href="#" class="btn btn--bg" target="_blank">Live Link (coming soon)</a>
-        </div>
-        <div class="project-cs-hero__cta">
-          <a href="https://github.com/JaredjKing/HFTComparisonApp" class="btn btn--bg" target="_blank">Comparison Code Link</a>
-        </div>
-        <div class="grid-container">
-          <div class="project-cs-hero__cta">
-            <a href="https://github.com/JaredjKing/SentimentHighFrequencyTrading" class="btn btn--bg" target="_blank">Sentiment Code Link</a>
-          </div>
-          <div class="project-cs-hero__cta">
-            <a href="https://github.com/JaredjKing/LSTMHighFrequencyTrading" class="btn btn--bg" target="_blank">ML Code Link</a>
-          </div>
         </div>
       </div>
     </section>
@@ -117,7 +115,7 @@
                 This project is my attempt to see the differences between the 2, and also get some exposure to one of the more popular trading techniques; high frequency trading. There are 3 main components
                 to this project; sentiment based HFT, Mathematical HFT (long short term memory ML model), and a comparison between the 3. 
               </p>
-              <h3 class="project-details__content-title">Sentiment Based HFT</h3>
+              <h3 class="project-details__content-title">Sentiment Based Analysis</h3>
               <img
               src="./assets/png/SMLDiagram.png"
               style="width: 100%; height: auto; display: block;"
@@ -129,14 +127,12 @@
                 phrases. 
               </p>
               <p class="project-details__desc-para">
-                For efficience, I also decided to run the models on separate threads such that not as much time would be wasted in calculations. For this, no mutexes were needed as all of the 
+                For efficiency, I also decided to run the models on separate threads such that not as much time would be wasted in calculations. For this, no mutexes were needed as all of the 
                 functions used were atomic as noted in the Python documentation. The general flow of this sub-project is as follows: collect data, clean data, run models on data, fit the data to a [-1,1] range,
                 and then average the values together based on their respective weights. You can see this is the "main.py" file of the Sentiment Code Link above. This program is then ran itteratively where it will 
                 make many small simulated purchases to mimic a HFT algorithm.
-
-                <strong>This part is nearly complete.</strong>
               </p>
-              <h3 class="project-details__content-title">Machine Learning (Mathematical) Based HFT</h3>
+              <h3 class="project-details__content-title">Machine Learning Analysis (in Progress)</h3>
               <p class="project-details__desc-para">
                 This is phase 2 of the project where I will be using a popular machine learning algorithm called "Long Short Term Memory" to predict stock prices given 
                 a stock ticker. Although pre-trained models for this are readily accessible, I will be training my own model for this sub-project. 
@@ -166,14 +162,12 @@
                   LSTMs are widely used for tasks like time-series prediction, natural language processing, and speech recognition because they excel at learning patterns in sequential data, 
                   where context from earlier inputs can be crucial to make accurate predictions. Making it a perfect tool to make predictions for the stock market, where each stock can easily 
                   be viewed as a time-series. This model will then be ran interatively to make purchasing decisions as an HFT.
-                  
-                  <strong>This part of the project is about to begin</strong>
               </p>
-              <h3 class="project-details__content-title">Comparison</h3>
+              <h3 class="project-details__content-title">Comparison and HFT Implementation (Next Up)</h3>
               <p class="project-details__desc-para">
-                This part of the project will be a static webapp that will be hosted on Github Pages just like this website that will routinely run the prediction models over time 
-                and compare their respective scores. This project will have an indepth analysis of the differences between the two and will show their previous scores as well as their average
-                returns. <strong>This part of the project has not begun yet</strong>
+                This part of the project will routinely run the prediction models over time and compare their respective scores. This project will have an indepth analysis 
+                of the differences between the two and will show their previous scores as well as their average returns. I am also hoping to add in some backtesting features 
+                to this project to compare historicals as well. <strong>This part of the project has not begun yet</strong>
               </p>
             </div>
             <div class="project-details__tools-used">
@@ -201,38 +195,17 @@
               <span>Social</span>
             </h2>
             <div class="main-footer__social-cont">
-              <a target="_blank" rel="noreferrer" href="#">
+              <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/king-jared">
                 <img
                   class="main-footer__icon"
                   src="./assets/png/linkedin-ico.png"
                   alt="icon"
                 />
               </a>
-              <a target="_blank" rel="noreferrer" href="#">
+              <a target="_blank" rel="noreferrer" href="https://github.com/JaredjKing">
                 <img
                   class="main-footer__icon"
                   src="./assets/png/github-ico.png"
-                  alt="icon"
-                />
-              </a>
-              <a target="_blank" rel="noreferrer" href="#">
-                <img
-                  class="main-footer__icon"
-                  src="./assets/png/twitter-ico.png"
-                  alt="icon"
-                />
-              </a>
-              <a target="_blank" rel="noreferrer" href="#">
-                <img
-                  class="main-footer__icon"
-                  src="./assets/png/yt-ico.png"
-                  alt="icon"
-                />
-              </a>
-              <a target="_blank" rel="noreferrer" href="#">
-                <img
-                  class="main-footer__icon main-footer__icon--mr-none"
-                  src="./assets/png/insta-ico.png"
                   alt="icon"
                 />
               </a>
@@ -245,7 +218,6 @@
             </p>
           </div>
         </div>
-
         <div class="main-footer__lower">
           &copy; Copyright 2021. Made by
           <a rel="noreferrer" target="_blank" href="https://rammaheshwari.com"

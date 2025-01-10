@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S4EN3HN5QD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-S4EN3HN5QD');
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -15,6 +24,10 @@
       href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
   </head>
   <body>
     <header class="header">
@@ -96,32 +109,79 @@
     <section class="project-details">
       <div class="main-container">
         <div class="project-details__content">
-          <div class="project-details__showcase-img-cont">
-            <img
-              src="./assets/jpeg/project-mockup-example.jpeg"
-              alt="Project Image"
-              class="project-details__showcase-img"
-            />
-          </div>
-          <div class="project-details__content-main">
-            <div class="project-details__desc">
-              <h3 class="project-details__content-title">Project Overview</h3>
-              <p class="project-details__desc-para">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-                alias tenetur minus quaerat aliquid, aut provident blanditiis,
-                deleniti aspernatur ipsam eaque veniam voluptatem corporis vitae
-                mollitia laborum corrupti ullam rem. Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Neque alias tenetur minus quaerat
-                aliquid, aut provident blanditiis, deleniti aspernatur ipsam
-                eaque veniam voluptatem corporis vitae mollitia laborum corrupti
-                ullam rem?
-              </p>
-              <p class="project-details__desc-para">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-                alias tenetur minus quaerat aliquid, aut provident blanditiis,
-                deleniti aspernatur ipsam eaque veniam voluptatem corporis vitae
-                mollitia laborum corrupti ullam rem?
-              </p>
+            <div class="project-details__content-main">
+                <div class="project-details__desc">
+                    <h3 class="project-details__content-title">Project Overview</h3>
+                    <p class="project-details__desc-para">
+                        This project is a multiprocess webcrawler written in C, designed to recursively search web pages by 
+                        parsing their content for additional URLs and PNGs. Focussing on advanced systems programming concepts, including 
+                        interprocess communication, concurrency, and data structure design. The purpose of this webcrawler was to 
+                        find PNGs in the relevant links and store all of them until reaching either a set depth limit, or until finding 
+                        the desired number of PNGs.
+                    </p>
+                    
+                    <p class="project-details__desc-para">
+                        <strong>Frontier Management with a Stack:</strong>
+                        A dynamically allocated stack is used to manage the frontier of URLs to visit. This ensures a Last-In-First-Out (LIFO) order, allowing depth-first crawling of web pages.
+                    </p>
+                    <pre><code class="language-c">
+    typedef struct frontier_stack{
+        int size;
+        int pos;
+        char **urls;
+    } STACK;
+    
+    int stack_init(STACK *stack, int starting_size){
+      stack->urls = malloc(starting_size * sizeof(char *));
+      stack->pos = -1;
+      stack->size = starting_size;
+      return 0;
+    }
+    
+    // the following operations were also added to the stack
+    int resize(STACK *stack){...}
+    int push(STACK *stack, char* new_url){...}
+    char *pop(STACK *stack){...}
+    int destroy_stack(STACK *stack){...}
+    
+    // With the following Synchronization Controllers
+    pthread_mutex_t frontier_mutex;
+    sem_t frontier_available;
+                        </code></pre>
+                    <p class="project-details__desc-para">
+                        <strong>Synchronization:</strong>
+                        Synchronization is a key concern in multiprocess applications and this project was no different. Semaphores, mutexes, and atomic ints were
+                        used extensively to ensure that all processes were able to do their work and exit safely, avoiding any potential deadlocks. An example below 
+                        shows the `thread_todo` function, which is the task for all web crawling threads.
+                    </p>
+                    <pre>
+                      <code class="language-c">
+    void *thread_todo(void *arg){
+        bool waiting_appended = false;
+        while(atomic_load(&png_counter) < m){
+            if(atomic_load(&threads_waiting) >= t){
+                pthread_mutex_lock(&frontier_mutex);
+                if(frontiers.pos == -1){
+                    pthread_mutex_unlock(&frontier_mutex);
+                    break;
+                }
+                pthread_mutex_unlock(&frontier_mutex);
+            }
+            thread_crawl(&waiting_appended);
+        }
+    }</code>
+                    </pre>
+                    <p class="project-details__desc-para">
+                        It continuously runs as long as fewer than `m` tasks have been processed, checking if other threads are waiting to avoid overloading the system (via `threads_waiting`). The function 
+                        uses `frontier_mutex` to safely access and check the `frontiers` queue, which holds URLs to be crawled, and it ensures no thread proceeds when the 
+                        queue is empty. If the queue has no URLs, the thread exits. The `waiting_appended` flag tracks if the thread is in a waiting state for synchronization 
+                        with others. The atomic variables like `threads_waiting` and `png_counter` are used to manage synchronization between threads and ensure no thread starts 
+                        crawling if too many are waiting or if the overall task limit `m` (the number of processed PNGs) is reached. 
+                    </p>
+                    <p class="project-details__desc-para">The combination of mutex locks and atomic 
+                        operations ensures thread safety and coordinated task processing without race conditions or resource contention.
+                    </p>
+                </div>
             </div>
             <div class="project-details__tools-used">
               <h3 class="project-details__content-title">Tools Used</h3>
@@ -133,24 +193,8 @@
                 <div class="skills__skill">Deadlocks</div>
                 <div class="skills__skill">GitLab</div>
                 <div class="skills__skill">Ubuntu</div>
-                <div class="skills__skill">Multi-proccess applications</div>
+                <div class="skills__skill">Interproccess communication</div>
               </div>
-            </div>
-            <div class="project-details__links">
-              <h3 class="project-details__content-title">See Live</h3>
-              <a
-                href="#"
-                class="btn btn--med btn--theme project-details__links-btn"
-                target="_blank"
-                >Live Link</a
-              >
-              <a
-                href="#"
-                class="btn btn--med btn--theme-inv project-details__links-btn"
-                target="_blank"
-                >Code Link</a
-              >
-            </div>
           </div>
         </div>
       </div>
@@ -163,48 +207,26 @@
               <span>Social</span>
             </h2>
             <div class="main-footer__social-cont">
-              <a target="_blank" rel="noreferrer" href="#">
+              <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/king-jared">
                 <img
                   class="main-footer__icon"
                   src="./assets/png/linkedin-ico.png"
                   alt="icon"
                 />
               </a>
-              <a target="_blank" rel="noreferrer" href="#">
+              <a target="_blank" rel="noreferrer" href="https://github.com/JaredjKing">
                 <img
                   class="main-footer__icon"
                   src="./assets/png/github-ico.png"
                   alt="icon"
                 />
               </a>
-              <a target="_blank" rel="noreferrer" href="#">
-                <img
-                  class="main-footer__icon"
-                  src="./assets/png/twitter-ico.png"
-                  alt="icon"
-                />
-              </a>
-              <a target="_blank" rel="noreferrer" href="#">
-                <img
-                  class="main-footer__icon"
-                  src="./assets/png/yt-ico.png"
-                  alt="icon"
-                />
-              </a>
-              <a target="_blank" rel="noreferrer" href="#">
-                <img
-                  class="main-footer__icon main-footer__icon--mr-none"
-                  src="./assets/png/insta-ico.png"
-                  alt="icon"
-                />
-              </a>
             </div>
           </div>
           <div class="main-footer__row main-footer__row-2">
-            <h4 class="heading heading-sm text-lt">John Doe</h4>
+            <h4 class="heading heading-sm text-lt">Jared King</h4>
             <p class="main-footer__short-desc">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit facilis
-              tempora explicabo quae quod deserunt
+              Thank you for taking the time to look through my Portfolio!
             </p>
           </div>
         </div>

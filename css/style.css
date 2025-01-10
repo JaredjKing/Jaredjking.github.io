@@ -251,6 +251,23 @@ textarea {
   display: none;
 }
 
+pre {
+  margin: 0; /* Removes extra margin around the code block */
+  padding: 5px; /* Reduces padding inside the code block */
+  line-height: 1.2; /* Adjusts line spacing */
+  background-color: #f4f4f4; /* Optional: Light background for the code box */
+  border: 1px solid #ddd; /* Optional: Border for the code box */
+  border-radius: 4px; /* Optional: Rounded corners */
+  display: inline-block; /* Shrink to fit the code content */
+}
+
+code {
+  font-family: "Courier New", Courier, monospace; /* Monospaced font for code */
+  font-size: 14px; /* Adjust font size to your preference */
+  background: none; /* Removes default background for <code> */
+}
+
+
 .home-hero {
   color: #fff;
   background: url(../../assets/Calgary.jpg);
